@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+  <h1>kbridson's repos!</h1>
+
+  <button>Fetch GitHub repo info</button>
+
+  <div id="data"></div>
+
+  <script>
+    const button = document.getElementsByTagName("button")[0]
+    button.addEventListener("click", async function fetchGithubData() {
+      try {
+        const data = await fetch("https://api.github.com/users/kbridson/repos").then((response) => response.json())
+        // console.log(data[0]["name"])
+        const dataDiv = document.getElementById("data")
+        dataDiv.innerHTML = ""
+        data.forEach(element => {
+          const pName = document.createElement("p")
+          pName.innerText = element["name"]
+          dataDiv.insertAdjacentElement("beforeend", pName)
+        });
+      } catch (error) {
+        console.log("Error fetching data: ", error)
+      }
+    })
+  </script>
+</body>
+
+</html>

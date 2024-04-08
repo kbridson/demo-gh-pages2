@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+  <h1>Cars</h1>
+
+  <div id="cars"></div>
+
+  <script>
+    const cars = [
+      { make: "Honda", model: "Accord" },
+      { make: "Toyota", model: "Supra" },
+      { make: "Toyota", model: "Celica" }
+    ]
+    cars.forEach((car) => {
+      const pEl = document.createElement("p")
+      pEl.innerHTML = `${car["make"]} ${car["model"]}`
+
+      const carsEl = document.getElementById("cars")
+      carsEl.insertAdjacentElement("beforeend", pEl)
+    })
+  </script>
+</body>
+
+</html>

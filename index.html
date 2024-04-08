@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <h1>Look at the kittens!</h1>
+
+  <p>Kittens are so cute!</p>
+
+  <form onsubmit="return false;" style="padding-bottom: 15px;">
+    <label for="rating">How cute are these kittens (1-5)?</label>
+    <input type="number" id="rating" name="rating" min="1" max="5" value="3">
+    <input type="submit">
+  </form>
+
+  <div>
+    <img src="kitten1.jpeg" alt="">
+    <img src="kitten2.jpeg" alt="">
+  </div>
+
+
+
+  <script>
+    const body = document.getElementsByTagName("body")[0]
+    // console.log(body)
+    body.style.backgroundColor = "lightblue"
+
+    const images = document.getElementsByTagName("img")
+    // console.log(images)
+    Array.from(images).forEach(element => {
+      element.style.border = "5px solid #555"
+    });
+
+    images[0].addEventListener("mouseover", (event) => {
+      const oldHeight = event.target.style.height
+      event.target.style.height = "100px"
+
+      // reset the color after a short delay
+      setTimeout(() => {
+        event.target.style.height = oldHeight;
+      }, 50);
+    })
+
+    document.addEventListener("submit", () => {
+      const input = document.getElementById("rating")
+      const message = ` You entered a rating of ${input.value}`
+      // const p = document.getElementsByTagName("p")[0]
+      // p.innerHTML = p.innerHTML + message
+      const messageElement = document.createElement("p")
+      messageElement.innerText = message
+      const form = document.getElementsByTagName("form")[0]
+      form.insertAdjacentElement("afterend", messageElement)
+    })
+
+  </script>
+
+</body>
+
+</html>
