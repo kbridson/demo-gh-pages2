@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+  <h1>Talking Animals</h1>
+
+  <ul id="animals">
+  </ul>
+
+  <p id="speak"></p>
+
+  <script>
+    const animals = [
+      { name: "Joe", species: "Snake", voice: "hiss" },
+      { name: "Jeff", species: "Tiger", voice: "yo" },
+      { name: "Ted", species: "Koala", voice: "grr" },
+    ]
+
+    const animalsList = document.getElementById("animals")
+    animals.forEach((animal) => {
+      const animalInList = document.createElement("li")
+      animalInList.innerHTML = `<button id="${animal["name"]}" onClick="speak(this.id)">${animal["name"]}</button>`
+      animalsList.insertAdjacentElement("beforeend", animalInList)
+    })
+
+    function speak(name) {
+      const animal = animals.find((animal) => animal["name"] == name)
+      const speakText = `${animal.name} the ${animal.species} says ${animal.voice}!`
+      // console.log(speakText)
+      const speakElement = document.getElementById("speak")
+      speakElement.innerHTML = speakText
+    }
+  </script>
+</body>
+
+</html>
